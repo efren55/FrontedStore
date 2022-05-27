@@ -1,0 +1,329 @@
+:root{ /*Valores que podemos reutilizar y si hay un cambio lo podemos cambiar en esta parte y se cambiara en todo el codigo*/
+    --primario:#9c2780;
+    --primarioOscuro: #89119d;
+    --secundario: #ffce00; 
+    --secundarioOscuro: rgb(233,287,2);
+    --blanco: #fff;
+    --negro: #000;
+
+    --fuentePrincipal: 'Staatliches', cursive; /*Aqui podemos cambiar la fuente principal en esta parte y en html*/
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; /*Para que 1rem sea igual a 10px*/
+}
+  *, *:before, *:after {
+    box-sizing: inherit;
+}
+
+
+  /*Globales*/
+body{
+    background-color: var(--primario);
+    font-size: 1.6rem;
+    line-height: 1.5; /*Interlineado*/
+}
+
+p{
+    font-size: 1.8rem;
+    font-family: Arial, Helvetica, sans-serif;
+    color:var(--blanco);
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    max-width: 100%;
+    width: 100%; 
+    /*Se elimino los width:100% de las etiquetas CSS para hacer una global y se elimino el max-width*/
+}
+
+
+.contenedor{
+    max-width: 120rem; /*Maximo de anchura de los elementos*/
+    margin: auto; /*Centra todo el contenido en pantalla*/
+}
+
+h1,h2,h3{
+    text-align: center;
+    color: var(--secundario);
+    font-family: var(--fuentePrincipal);
+}
+
+h1{
+    font-size: 4rem;
+}
+h2{
+    font-size: 3.2rem;
+}
+h3{
+    font-size: 2.4rem;
+}
+
+/*Header*/
+
+.header{
+    display: flex;
+    justify-content: center;
+}
+
+.header__logo{
+    margin: 3rem 0; /*3rem es hacia arriba y abajo. 0 indica a la derecha e izquierda*/
+    max-width: 25rem; /*Esto es para que el logo no ocupe toda la pantalla*/
+}
+
+/*Navegacion*/
+.navegacion{
+    background-color: var(--primarioOscuro);
+    padding: 1rem 0; /*Hara mas grande la barra arriba y abajo y nada hacia a los lados (0)*/
+    display: flex;
+    justify-content: center;
+    gap: 2rem; /*Va a separar los elementos. En este caso separara tienda y nosotros horizontalmente*/
+}
+
+.navegacion__enlace{
+    font-family: var(--fuentePrincipal);
+    color: var(--blanco);
+    font-size: 3rem;
+    /*margin-right: 2rem;*/ /*Esta sintaxis se podria usar en vez de "gap" para separar los elementos tienda y nosotros*/
+}
+
+/* Esta sintaxis es por si se utiliza "margin-right: 2rem;" en vez de "gap", para centrar el contenido
+.navegacion__enlace:last-of-type{ --> Aqui se selecciona el ultimo elemento 
+   /*margin-right: 0; --> Tendra 0 de separacion hacia la izquierda, lo que hara que se centren los elementos
+} */
+
+.navegacion__enlace--activo,
+.navegacion__enlace:hover{
+    color: var(--secundario);
+    /*background-color: var(--secundario);*/ /*Si agregamos esta sintaxis cambiara de color en forma de bloque cuando
+    pongamos el puntero sobre los elementos, sin cambiar las letras */
+}
+
+
+/*Footer*/
+.footer{
+    background-color: var(--primarioOscuro);
+    padding: 1rem 0; /*Hara mas grande la barra arriba y abajo y nada hacia a los lados (0)*/
+    margin-top: 2rem; /*Va a separar la barra navegacion de la de footer*/
+    /*display: flex;
+    justify-content: center;*/ /*Esta sintaxis se pudo utilizar para centrar el texto en vez de text-align:center;*/
+}
+
+.footer__texto{
+    font-family: var(--fuentePrincipal);
+    color: var(--blanco);
+    font-size: 1.5rem;
+    text-align: center; 
+}
+
+/*Grid*/
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 2rem; /*Separara 2rem tanto horizontal como verticalmente cada elemento*/
+    
+    /*el "gap" es igual a poner la siguiente sintaxis:
+    column-gap: 2rem; --> Indica la separacion vertical entre cada elemento
+    row-gap:2rem; --> Indica la separacion horizontal entre cada producto */
+}
+
+@media (min-width: 768px) { 
+    .grid{
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+
+/*Producto*/
+
+.producto{
+    background-color: var(--primarioOscuro);
+    padding: 1rem;
+}
+
+
+/*.producto__informacion{
+
+}*/
+
+.producto__nombre{
+    font-size: 3.5rem;
+}
+
+.producto__precio{
+    font-size: 2.5rem;
+    color: var(--secundario);
+}
+
+.producto__nombre,
+.producto__precio{
+    font-family: var(--fuentePrincipal);
+    margin: 1rem 0;
+    text-align: center;
+    line-height: 3rem; /*Interlineado*/
+}
+
+/*Graficos*/
+/*Nota: Las coordenadas se obtienen con el navegador firefox web developer (click en inspeccionar)  */
+
+.grafico{
+    min-height: 30rem; /*Altura minima*/
+    background-repeat: no-repeat; /*Para que no se repita la imagen*/
+    background-size: cover; /*Para que la imagen llene todo su espacio*/
+    grid-column: 1/3; /*Como se aplican las mismas especificaciones en camisas y node, se para a grafico, ya que este aplica a los 2*/
+
+}
+
+.grafico--camisas{
+    grid-row: 2/3;
+    /*grid-column: 1/3;*/
+    background-image: url(../img/grafico1.jpg);
+}
+@media (min-width: 768px) {
+    .grafico--camisas{
+        grid-column: 1/3;
+        grid-row: 2/3;
+    }
+    
+}
+
+.grafico--node{
+    background-image: url(../img/grafico2.jpg);
+    /*grid-column: 1/3;*/
+    grid-row: 8/9;
+}
+
+@media (min-width: 768px) { /*Esto es para especificar que se trabajara con dispositivos mayores a 768px. Porque 
+    estamos dando condiciones para que se trabaje en dispositivos grandes y no en menores a 768px*/
+    .grafico--node{
+        grid-row: 5/6;
+        grid-column: 2/4;
+    }
+}
+
+/*---------Nosotros-----------*/
+.nosotros{
+    display: grid;
+    grid-template-rows: repeat(2,auto);
+    row-gap: 2rem;
+}
+
+@media (min-width: 768px ) {
+    .nosotros{
+        grid-template-columns: repeat(2,1fr);
+        column-gap: 2rem;
+    }
+
+}
+
+.nosotros__imagen{
+    grid-row: 1/2;
+}
+
+@media (min-width: 768px) {
+    .nosotros__imagen{
+        grid-column: 2/3;
+    }
+}
+
+.nosotros__contenido{
+        grid-row: 2/3;
+}
+
+@media (min-width: 768px) {
+    .nosotros__contenido{
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+}
+
+.comprar__titulo{
+    grid-row: 3/4;
+    /*grid-column: 1/2;*/
+}
+@media (min-width: 768px) {
+    .comprar__titulo{
+    grid-row: 2/3;
+    grid-column: 1/3;
+    }
+}
+
+.bloques{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    column-gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .bloques{
+        grid-template-columns: repeat(4,1fr); /*Se mostararn 4 columnas*/
+    }
+}
+
+.bloque{
+    text-align: center;
+}
+
+.bloque__titulo{
+    margin: 0rem;
+}
+
+/*
+.nosotros__logos{
+    grid-column: 1/2;
+    grid-row: 4/5;
+}
+@media (min-width: 768px) {
+    .nosotros__logos{
+        grid-column: 1/3;
+        grid-row: 3/4;
+    }
+}
+*/
+
+/*Pagina del producto*/
+@media (min-width: 768px) {
+    .camisa{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        column-gap: 2rem;
+    }
+}
+
+.formulario{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 2rem;
+
+}
+.formulario__campo{
+   /* border-color: var(--primarioOscuro);
+    border-width: 0.5rem;
+    border-style: solid;*/
+    /*Si no se quiere poner la sintaxis anterior, se puede resumir con lo siguiente:*/
+    border: 0.5rem solid var(--primarioOscuro); /*Primero va ancho de borde, despues tipo de borde y por ultimo el color del borde*/
+    background-color: transparent; /*Tomara el color del fondo. Tambien se le puede poner el color primario*/
+    color: var(--blanco); /*Color de la letra*/
+    font-size: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 1rem; /*Esto hace mas grande el imput (El cuadro donde viene el texto)*/
+}
+.formulario__submit{
+    background-color: var(--secundario);
+    border: none;
+    font-size: 2rem;
+    font-family: var(--fuentePrincipal);
+    padding: 2rem;
+    transition: font-size 0.3s ease, background-color 0.3s ease; /*Hara la transicion de color amarillo normal a amarillo oscuro en 03 seg.*/
+    /*Si se quiere agregar una transicion de tamano del boton, solo se cambia el background-color por font-size*/
+    grid-column: 1/3;
+}
+.formulario__submit:hover{
+    font-size: 2.4rem;
+    cursor: pointer; /*Esto hace que aparezca la manita en el boton*/
+   background-color: var(--secundarioOscuro); 
+}

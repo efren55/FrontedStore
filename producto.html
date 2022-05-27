@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Store</title>
+    <link rel="stylesheet" href="CSS/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> <!--Verificar esta linea-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!--Verificar esta linea-->
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet"> <!--Para cambiar la fuente lo hacemos desde css y aqui-->
+    <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body>
+    <header class="header"> <!--Bloque de BEM-->
+        <a href="index.html"> <!--Cuando den clic en el header, lo redirigira a la pagina principal-->
+        </a>
+        <img class="header__logo" src="img/logo.png" alt="Logotipo"> <!--El alt es el elemento alternativo que se mostrara en caso que la imagen no se muestre-->
+            <!--La imagen pertenece al elemento del BEM. Aqui se le agrega doble gion bajo (__)-->
+    </header>
+    <nav class="navegacion"> <!--Bloque ("navegacion")-->
+        <a class="navegacion__enlace navegacion__enlace--activo" href="index.html">Tienda</a> <!--Para crear 2 enlaces, se debe de poner a*2. Si se quieren mas solo se debe de multiplicar por la cantidad que se requiera-->
+        <a class="navegacion__enlace" href="nosotros.html">Nosotros</a> <!--Elemento ("navegacion__enlace")-->
+        <!--Modificador ("navegacion__enlace"--activo)-->
+    </nav>
+
+    <main class="contenedor">
+        <h1>React JS</h1>
+        <div class="camisa">
+            <img class="camisa__imagen" src="/img/3.jpg" alt="Imagen del producto">
+            <div class="camisa__contenido">
+                <p>Duis pretium sem odio, non tempus mi ullamcorper et. Cras id quam elit. Nullam id purus ac odio aliquet semper sed sit amet velit.
+                    Nam id accumsan mi, eget dapibus augue</p>
+                    <form class="formulario">
+                        <select class="formulario__campo"> <!--Esta eiqueta permitira tener opciones en el formulario como> chica, grande, etc-->
+                            <option disabled selected>--Seleccionar talla--</option> <!--Esta etiqueta hace que aparezca como primara opcion "Seleccionar talla".
+                            El atributo disabled hace que "seleccionar talla" no se pueda seleccionar. El atributo selected hace que "Seleccionar talla" aparezca como primera opcion 
+                            pero no se pueda seleccionar-->
+                            <option>Chica</option> 
+                            <option>Mediana</option>
+                            <option>Grande</option>
+                        </select>
+
+                        <input class="formulario__campo" type="number" placeholder="Cantidad" min="1"> <!--Se agregaran las cantidades de camisas a desear. Solo se podra seleccionar 
+                            numeros con el "type number", el placeholder sirve para que en la barra aparezca "cantidad" y el "min" significa cantidad minima que aparecera-->
+                        <input class="formulario__submit" type="submit" value="Agrega al carrito"> <!--Esta etiqueta permite agregar un boton para comprar o agregar al carrito los productos seleccionados
+                        gracias al atributo "type submit", el agributo value mos permite poner un nombre al boton.-->
+                    </form>
+            </div>
+
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p class="footer__texto">FrontEnd Store - Todos los derechos reservados 2023.</p>
+    </footer>
+</body>
+   
+</html>
